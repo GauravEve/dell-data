@@ -1,0 +1,58 @@
+body{
+  margin:0 auto;
+  max-width:900px;
+}
+li{
+  list-style-type:none;
+}
+nav ul{
+  display:flex;
+  list-style-type:none;
+  margin:0;
+  padding:0;
+  box-shadow:0 4px 6px -1px rgba(0,0,0,0.1),
+             0 2px 4px -1px rgba(0,0,0,0.6)
+}
+
+nav a {
+  text-decoration:none;
+  display:inline-block;
+  padding:1rem;
+}
+
+.main{
+  padding:1rem;
+}
+nav a.active{
+  background-color: aqua;
+}
+
+.main ul li{
+  margin-right: 1rem;
+}
+
+.main ul{
+  display:flex;
+  margin:0;
+  padding:0'
+}
+
+ul.orders{
+  flex-direction: column;
+  border:1px solid;
+  padding: 0.5rem;
+}
+
+.order li{
+  padding: 0.5rem 0;
+}
+
+ul.invoices{
+  flex-direction: column;
+  border:1px solid;
+  padding: 0.5rem;
+}
+
+.invoices li{
+  padding:0.5rem 0;
+}

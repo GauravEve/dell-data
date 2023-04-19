@@ -1,0 +1,57 @@
+create table Airplane(
+    AID varchar(50) primary key,
+    Type varchar(50),
+    Capacity int,
+    Name varchar(50)
+    );
+    
+create table Flight_schedule(
+    FID varchar(50) primary key,
+    AID varchar(50),
+    Departure varchar(50),
+    Arrival varchar(50),
+    DepartureTime datetime,
+    ArrivalTime datetime,
+    foreign key(AID) references Airplane(AID),
+    fare int
+    );
+ 
+create table Passenger(
+    PID varchar(50) primary key,
+    Name varchar(50),
+    Address varchar(100),
+    Age int,
+    Nationality varchar(50),
+    Email varchar(50),
+    contactNo int(10)
+    );
+    
+create table Seats(
+	FID varchar(50),
+    Type varchar(50),
+    SeatNo varchar(50),
+    foreign key(FID) references Flight_schedule(FID),
+    primary key(FID,SeatNo)
+    );
+    
+create table Booking(
+   	BID varchar(50),
+    BookingDate varchar(50),
+    FID varchar(50),
+    PID varchar(50),
+    foreign key(FID) references Flight_schedule(FID),
+    foreign key(PID) references Passenger(PID),
+    primary key(BID,FID)
+    );
+
+create table Route(
+	RID varchar(50),
+    FID varchar(50),
+    primary key(RID,FID),
+    Departure varchar(50),
+    Arrival varchar(50),
+    foreign key(FID) references Flight_schedule(FID)
+);
+
+    
+ 

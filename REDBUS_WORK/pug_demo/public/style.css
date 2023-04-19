@@ -1,0 +1,41 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+nav{
+    background: #be9090;
+    color:dodgerblue;
+    display:flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+nav a{
+    color:red;
+    text-decoration: none;
+}
+
+nav a:hover{
+    color:beige;
+    text-decoration: underline;
+}
+
+.container{
+    margin: 20px;
+    max-width:100%;
+}
+
+h1{
+    font-size: 42px;
+    text-align: center;
+    width: match-parent;
+}
+
+p{
+    font-size: 22px;
+    margin:20px;
+}
+
+
+

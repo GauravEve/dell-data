@@ -1,0 +1,200 @@
+db.flights.insertOne([{"fid": "A-1527",
+  "flight_model": "AIR101",
+  "source": "Jaipur",
+  "destination": "Delhi",
+  "departure_date": "2023-10-11",
+  "arrival_date": "2023-10-11",
+  "departure_time": "13:30:00",
+  "arrival_time": "15:30:00",
+  "duration": "2"
+}])
+db.products.insertOne([{"id": "51",
+  "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4c1Ci6ug9PFwd4fIEhW5IAwr4FmDlEY3y5g&usqp=CAU",
+  "description": "Nike Running shoes",
+  "type": "men",
+  "brand": "nike",
+  "size": "M",
+  "price": 3000,
+  "category": "shoe",}])
+db.flights.insertMany([{"fid": "A-157",
+  "flight_model": "AIR01",
+  "source": "Delhi",
+  "destination": "Jaipur",
+  "departure_date": "2023-10-10",
+  "arrival_date": "2023-10-10",
+  "departure_time": "12:30:00",
+  "arrival_time": "15:30:00",
+  "duration": "3"
+},
+{"fid": "A-1517",
+  "flight_model": "AIR201",
+  "source": "Uttrakhand",
+  "destination": "Jammu",
+  "departure_date": "2023-09-09",
+  "arrival_date": "2023-09-9",
+  "departure_time": "14:30:00",
+  "arrival_time": "16:30:00",
+  "duration": "2"
+},
+{"fid": "A-058",
+  "flight_model": "AIR301",
+  "source": "Pune",
+  "destination": "Delhi",
+  "departure_date": "2023-01-02",
+  "arrival_date": "2023-01-02",
+  "departure_time": "13:30:00",
+  "arrival_time": "15:30:00",
+  "duration": "2"
+},
+{"fid": "A-151",
+  "flight_model": "AIR401",
+  "source": "Kashmir",
+  "destination": "Kanyamuri",
+  "departure_date": "2023-10-01",
+  "arrival_date": "2023-10-01",
+  "departure_time": "12:30:00",
+  "arrival_time": "17:30:00",
+  "duration": "5"
+},
+{"fid": "A-157",
+  "flight_model": "AIR501",
+  "source": "Delhi",
+  "destination": "Pune",
+  "departure_date": "2023-04-04",
+  "arrival_date": "2023-04-04",
+  "departure_time": "9:30:00",
+  "arrival_time": "11:30:00",
+  "duration": "2"
+},
+{"fid": "A-1576",
+  "flight_model": "AIR601",
+  "source": "Delhi",
+  "destination": "Jaipur",
+  "departure_date": "2023-10-10",
+  "arrival_date": "2023-10-10",
+  "departure_time": "12:30:00",
+  "arrival_time": "15:30:00",
+  "duration": "3"
+},
+{"fid": "A-147",
+  "flight_model": "AIR701",
+  "source": "Raipur",
+  "destination": "Nagaland",
+  "departure_date": "2023-11-15",
+  "arrival_date": "2023-11-15",
+  "departure_time": "12:30:00",
+  "arrival_time": "15:30:00",
+  "duration": "3"
+},
+{"fid": "A-159",
+  "flight_model": "AIR801",
+  "source": "Delhi",
+  "destination": "Andaman",
+  "departure_date": "2023-10-10",
+  "arrival_date": "2023-10-10",
+  "departure_time": "12:30:00",
+  "arrival_time": "15:30:00",
+  "duration": "3"
+},
+{"fid": "A-160",
+  "flight_model": "AIR701",
+  "source": "Delhi",
+  "destination": "China",
+  "departure_date": "2023-03-10",
+  "arrival_date": "2023-03-10",
+  "departure_time": "12:30:00",
+  "arrival_time": "19:30:00",
+  "duration": "7"
+},
+{"fid": "A-169",
+  "flight_model": "AIR901",
+  "source": "Gujrat",
+  "destination": "Andaman",
+  "departure_date": "2023-01-10",
+  "arrival_date": "2023-01-10",
+  "departure_time": "12:30:00",
+  "arrival_time": "15:30:00",
+  "duration": "3"
+}
+])
+
+db.flights.insertOne([{"fid": "I-1125",
+  "flight_model": "IND101",
+  "source": "Ranchi",
+  "destination": "Bangalore",
+  "departure_date": "2023-10-23",
+  "arrival_date": "2023-10-23",
+  "departure_time": "12:00:00",
+  "arrival_time": "15:00:00",
+  "duration": "3"
+}])
+
+db.flights.insertOne([{"fid": "I-1234",
+  "flight_model": "IND101",
+  "source": "Pune",
+  "destination": "Goa",
+  "departure_date": "2023-09-25",
+  "arrival_date": "2023-09-25",
+  "departure_time": "1:00:00",
+  "arrival_time": "2:00:00",
+  "duration": "1"
+}])
+
+db.passenger.insertOne([{
+ "user_id": "ID1",
+  "username": "Sourav",
+  "password": "sourav2",
+  "firstname": "Sourav",
+  "lastname": "Kumar",
+  "phone": "8586202138",
+  "email": "Souarv$34",
+  "dob":"2001-09-03",
+  "age": "22",
+  "gender": "Male",
+  "address": "Rewari"
+}])
+
+db.passenger.insertOne([{
+ "user_id": "ID2",
+  "username": "Sonam",
+  "password": "Sonam312",
+  "firstname": "Sonam",
+  "lastname": "Sharma",
+  "phone": "9172202138",
+  "email": "Sonam314",
+  "dob":"2000-08-03",
+  "age": "22",
+  "gender": "Male",
+  "address": "Jammu"
+}])
+
+db.passenger.insertOne([{
+ "user_id": "ID4",
+  "username": "Jatin",
+  "password": "Jatin3212",
+  "firstname": "Jatin",
+  "lastname": "Singh",
+  "phone": "9172202112",
+  "email": "Jatinhello",
+  "dob":"2000-11-04",
+  "age": "22",
+  "gender": "Male",
+  "address": "Chandigarh,Punjab"
+}])
+
+db.seats.insertMany([{
+ "fid": "A-1527",
+  "economy": 200,
+  "business": 30
+},
+{
+ "fid": "I-1125",
+  "economy": 180,
+  "business": 20
+},
+{
+ "fid": "I-1234",
+  "economy": 200,
+  "business": 50
+}])
+

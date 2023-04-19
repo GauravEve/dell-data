@@ -1,0 +1,3 @@
+9148369706
+
+db.passenger.insertOne([{user_id:"1",username:"Gaurav",password:"Gaurav123",firstname:"Gaurav",lastname:"Kamboj",phone:"1234567890",email:"db@123",dob:"2000-08-13",age:"22",gender:"Male",address:"12sdacacsc"}]);

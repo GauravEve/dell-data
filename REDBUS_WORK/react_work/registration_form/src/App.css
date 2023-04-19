@@ -1,0 +1,36 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+body{
+  background-image: linear-gradient(to right, blueviolet ,black);
+}
+
+.body1{
+  display: flex;
+  background-color: white;
+  flex-direction: column;
+  border-radius: 20px;
+  border: 3px solid blueviolet;
+  padding:20px
+}
+input{
+  margin-bottom: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
+  color: blueviolet;
+}
+
+h1{
+  margin-bottom: 40px;
+  color: white;
+}
+
+label{
+  color: black;
+}
+button:hover{
+  background: blueviolet;
+}

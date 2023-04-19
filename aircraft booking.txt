@@ -1,0 +1,68 @@
+create table airplane(
+    flight_model varchar(20) primary key,
+    registration_no varchar(20),
+    airline_name varchar(20),
+    airplane_type varchar(20),
+    capacity int(11)
+    );
+
+
+create table passenger(
+    user_id int primary key,
+username varchar(40),
+password varchar(20),
+firstname varchar(20),
+lastname varchar(20),
+phone varchar(20),
+email varchar(40),
+dob date,
+age int,
+gender varchar(10),
+address varchar(120)
+);
+
+create table flight(
+    flight_id varchar(20) primary key,
+    flight_model varchar(20),
+    source varchar(30),
+    destination varchar(30),
+    departure_date date,
+    arrival_date date,
+    departure_time time,
+    arrival_time time,
+    travel_duration decimal(6,2)
+    );
+
+create table booking(
+    booking_id int(11) primary key,
+    user_id int(11),
+    firstname varchar(20),
+    lastname varchar(20),
+    flight_id varchar(20),
+    fare decimal(6,2),
+    seat_type varchar(20),
+    departure_time time,
+    arrival_time time,
+    source varchar(30),
+    destination varchar(30),
+    foreign key(user_id) references passenger(user_id),
+    foreign key(flight_id) references flight(flight_id)
+    );
+
+create table route(
+    flight_id varchar(20),
+    foreign key(flight_id) references flight(flight_id),
+    stop1 varchar(20),
+    stop2 varchar(20),
+    stop3 varchar(20),
+    stop4 varchar(20)
+    );
+
+create table class(
+    flight_id varchar(20),
+    foreign key(flight_id) references flight(flight_id),
+    eco_class int,
+    busi_class int,
+    eco_fare decimal(6,2),
+    busi_fare decimal(6,2)
+    );

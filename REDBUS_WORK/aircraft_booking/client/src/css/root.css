@@ -1,0 +1,10 @@
+body{
+    background-image: url("https://scopepsych.com.au/wp-content/uploads/2020/08/6a00d83452030269e200e553b2c07a8833-800wi-2.jpg") !important;
+    background-color: #cccccc; /* Used if the image is unavailable */
+    height: 500px; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+    width:100%;
+    height:auto;
+}

@@ -1,0 +1,441 @@
+select * from employee1;
+select First_Name,Last_Name from employee1;
+select First_Name as Employee_Name from employee1;
+select lower(Last_Name) from employee1;
+select DISTINCT Department from employee1;
+select upper(Last_Name) from employee1;
+select substring(First_Name,1,4) from Employee1;
+select position('h' in 'john');
+select rtrim(First_Name) from Employee1;
+select ltrim(First_Name) from Employee1;
+create table employee(column1 datatype,column2 datatype.....);
+select length(First_Name) from employee1;
+Select replace(First_Name,'o','#') from employee1;
+select concat(First_Name,'_',Last_Name) from employee1;
+select year(Joining_Date),month(Joining_Date),day(Joining_Date) from employee1;
+select First_Name from employee1;
+select First_Name from employee1 order by First_Name des;
+select First_Name,salary from employee1 order by First_Name asc, Salary desc;
+select * from employee1 where First_Name='Bob';
+select * from employee1 where First_Name='Bob' or 'Alex';
+select * from employee1 where not(First_Name='Bob' or 'Alex');
+
+
+select * from candidates inner join employees on candidates.fullname=employees.fullname;
+
+select c.id candidates_id,e.id employees_id,
+		c.fullname candidates_name,e.fullname employees_name
+        from candidates c
+        left join employees e
+        on e.fullname=c.fullname;
+
+data in left table fullname value is null
+select c.id candidates_id,e.id employees_id,
+		c.fullname candidates_name,e.fullname employees_name
+        from candidates c
+        left join employees e
+        on e.fullname=c.fullname 
+        WHERE e.fullname is NULL;
+
+full join
+select c.id candidates_id,e.id employees_id,
+		c.fullname candidates_name,e.fullname employees_name
+        from candidates c
+        left join employees e
+          on e.fullname=c.fullname UNION
+select c.id candidates_id,e.id employees_id,
+		c.fullname candidates_name,e.fullname employees_name
+        from candidates c
+        right join employees e
+          on e.fullname=c.fullname;
+
+create trigger before_employee_update
+before update on employees1
+    for each ROW insert into employee_audit
+    set action='update',
+    	employeeNumber=OLD.employeeNumber,
+        lastname=OLD.lastname,
+        changeDate=NOW();
+update employees1
+set lastName='Phan'
+WHERE
+employeeNumber=201;
+
+
+create trigger after_insert1
+create or replace trigger after_insert1
+after insert
+on 
+employees
+for each row 
+    update employee_audit
+    set employee_audit.lastName=new.lastName
+    where employee_audit.employeeNumber=new.employeeNumber;
+
+
+
+DELIMITER $$
+
+create or replace trigger before_insert
+before INSERT
+ON
+WorkCenters
+for each ROW
+BEGIN
+	declare rowCount int;	
+	
+    select count(*)
+    into rowCount
+    from WorkCenterStats;
+    
+    if rowCount>0 THEN	
+    	update WorkCenterStats
+        set totalCapacity=totalCapacity+new.capacity;
+    ELSE
+    	insert into WorkCenterStats(totalCapacity)
+        VALUES(new.capacity);
+    END IF;
+END
+
+$$ DELIMITER ;
+
+
+DELIMITER $$
+create or replace trigger after_insert
+after INSERT
+on employees
+for each ROW
+BEGIN
+	declare rowCount int;
+	select count(*) into rowCount
+    from employeesalary;
+    
+    if rowCount>0 then
+    	update employeesalary 
+    	set totalSalary=totalSalary+new.Salary;
+    ELSE
+    	insert into employeesalary values(new.Salary);
+    End if;
+End
+
+$$ DELIMITER ;
+    
+
+DELIMITER $$
+create trigger after_members_insert
+after INSERT
+on members for each ROW
+BEGIN
+    if 
+    new.birthdate is NULL THEN
+    insert into reminders(memberid,message)
+    values(new.id,CONCAT('Hi',NEW.name,'plese update your date of birth'));
+    end if;
+end 
+
+$$ DELIMITER ;
+
+
+FOR AUTO INCREMET-id will get auto incremented
+insert into members(name,email,birthdate)
+values('Gaurav','Gaurav@','2000/08/13');
+
+db.employees.updateOne({_id:3},{$set:{salary:300000}};
+db.employees.updateMany({_id:1},{$push:{skills:{$each:['MERN','Javascript','SQL']}}});
+
+db.employees.insertMany([
+  {
+    _id: 1,
+    firstName: "John",
+    lastName: "King",
+    email: "JohnKing@gmail.com",
+    salary:10000,
+    skills: [
+      'Angular',
+      'React',
+      'MongoDB'],
+      department:{
+        name:'IT'
+      }
+  },
+  {
+    _id: 2,
+    firstName: "Jane",
+    lastName: "Doe",
+    email: "dontkillmydog@jane.com",
+    salary:8000,
+    skills: ['Accounting','Tax'],
+    department:{
+      name:'Finance'
+    }
+  },
+  {
+    _id: 3,
+    firstName: "James",
+    lastName: "Bond",
+    email: "james@abc.com",
+    salary: 7500,
+    skills:['Sales','Marketing'],
+    department:{
+      name:'Marketing'
+    }
+  },
+  {
+    _id: 4,
+    firstName: "Steve",
+    lastName: "Jobs",
+    email: "steve.j@abc.com",
+    salary: 7000,
+  },
+  {
+    _id: 5,
+    firstName: "Kapil",
+    lastName: "D",
+    email: "kapil.d@gmail.com",
+    salary: 4500,
+    skills:['Accounting','Tax'],
+    department:{
+      name:'Finance'
+    }
+  },
+  {
+    _id: 6,
+    firstName: "Amitabh",
+    lastName: "B",
+    email: "amitabh.b@gmail.com",
+    salary: 7000,
+  }
+]);
+
+db.employees.find({salary:{$gt:7000,$lt:8000}});
+
+db.employees.find({"department.name":"Finanace"});
+
+db.employees.find({"skills":{"Tax" $or "Sales"}});
+
+db.employees.find({$or:[{"skills":"Tax"},{"skills":"Sales"}]});
+
+db.employees.find({"skills":{$all:["Tax","Sales"]}});
+
+db.employees.find({"skills":{$size:3}});
+
+db.employees.find({salary:7000},{firstName:1,lastName:1});
+
+db.employees.find({firstName:'John'},{_id:0});
+
+cursor is used to store the find outputs in a virtual view
+we can limit how much document we require
+
+db.employees.find().count();
+
+db.employees.find().limit(3).sort({id:-1});
+
+db.employees.find().pretty();
+
+cur=db.employees.find();
+cur.forEach(function(doc){print(doc.firstName);
+});
+
+db.employees1.aggregate({$match:{salary:{$gt:5000,$lt:7000}}});
+
+db.employees1.aggregate({$group:{_id:'$department.name'}});
+
+db.employees1.aggregate({$group:{_id:'$department.name',totalEmployees:{$sum:1}}});
+db.employees1.aggregate({$group:{ _id: "$firstName", totalQuantity: { $count: "$department" }}});
+
+db.employees1.aggregate([{ $match:{gender:"Male"} },{$group:{ _id: "$department.name", totalEmp:{$sum:1}}}]);
+
+db.employees1.aggregate([{ $match:{gender:"Male"} },{$group:{ _id: "$department.name", totalSal:{$sum:"$salary"}}}]);
+
+db.employees1.aggregate({$match:{gender:"Male"}},{$sort:{firstName:1}});
+
+create table user(
+	userid varchara(50) primary key,
+	username varchar(50),
+	age int,
+	add
+	phone int(10),
+	gender varchar(10)
+);
+
+create table ticket(
+	userid varchar(50) foreign key references user(userid),
+	ticketid varchar(50) primary key,
+	flightid varchar(50),
+	dateofDeparture date,
+	dateofArrival date,
+	class varchar(50),
+	seatno varchar(50),
+	source varchar(50),
+	destination varchar(50)
+);
+
+create table flightclass(
+	ticketid int foreign key references ticket(ticketid),
+	classtype varchar(20)
+	
+);
+
+create table bookingagent(
+	flightid varchar(50) foreign key references flight(flightid),
+	userid varchar(50) foreign key references user(userid)
+);
+
+create flight(
+	flightid varchar(50) primary key,
+	routeid varchar(50) foreign key references route(routeid),
+	firstname varchar(50),
+	source varchar(50),
+	destination varchar(50),
+	dateofDeparture date,
+	dateofArrival date,
+	seatAvailable varchar(50)	
+);
+
+create route(
+	routeid varchar(50) primary key,
+	source varchar(50),
+	destination varchar(50)
+);
+
+db.inventory.find({"_id":{$eq:"LS0009100"}});
+
+    db.inventory.find({quantity:{$gt:5000}});
+
+    db.inventory.find({quantity:{$nin:[300,600]}});
+
+    db.employees.find({$and:[{job_role:"Store Associate",emp_age:{$gt:20,$lt:30}}]});
+
+    db.employees.find({$or:[{job_role:"Senior Cashier",job_role:"Store Manager"}]});
+
+    db.employees.find({job_role:{$nin:["Senior Cashier","Store Manager"]}});
+
+    db.employees.find({job_role:{$exists:true,$eq:"CAshier"}})
+
+    db.employees.find({job_role:{$exists:true},job_role:"CAshier"});
+
+    db.employees.find({$and:[{job_role:{$exists:true}},{job_role:"CAshier"}]});
+
+db.studentgrades.find({},{_id:0}).pretty();
+
+    db.collection.createIndex(<key>and<indextype>);
+
+    db.studentgrades.createIndex(
+        {name:1},
+        {name:"student name index"}
+    );
+    
+    db.studentgrades.getIndexes();
+    db.studentgrades.dropIndex("student name index");
+    db.studentgrades.getIndexes();
+    [
+  	{ v: 2, key: { _id: 1 }, name: '_id_' },
+  	{ v: 2, key: { name: 1 }, name: 'student name index' }
+    ]
+	
+    db.studentgrades.dropIndex("student name index");
+    db.studentgrades.createIndex({name:1})
+
+    db.studentgrades.find({},{_id:0}).sort({name:1});
+
+    db.studentgrades.createIndex({subject:1,score:-1});
+
+    db.studentgrades.find({},{_id:0}).sort({subject:1,score:-1});
+    
+    db.orders.aggregate({
+  
+    $lookup: {
+      from: "inventory",
+      localField: "item",
+      foreignField: "sku",
+      as: "inventory_docs"
+    }
+    });
+    
+    db.classes.aggregate({
+    
+    $lookup: {
+      from: "members",
+      localField: "enrollmentlist",
+      foreignField: "name",
+      as: "result"
+    }
+    });
+
+    db.members.aggregate({
+    
+    $lookup: {
+      from: "classes",
+      localField: "name",
+      foreignField: "enrollmentlist",
+      as: "result2"
+    }
+    });
+   
+    db.orders.aggregate([
+    {
+    $lookup: 
+    {
+      from: 'warehouses',
+      let:{order_item:"$item",order_qty:"$ordered"},
+        pipeline:[
+            {
+                $match:
+                {
+                    $expr:
+                    {
+                        $and:[
+                            {
+                                $eq:[
+                                    "$stock_item","$$order_item"
+                                ]
+                            },
+                            {
+                                $gte:["$instock","$$order_qty"]
+                            }
+                        ]
+                    }
+                }
+            },
+            {$project:{stock_item:0,_id:0}}
+        ],
+      
+      as: "stockdata"
+    }
+    }
+]);
+
+    db.createUser({
+    user:"puneet",
+    pwd:"puss@123",
+    roles:[
+        {
+        role:"readWrite",
+        db:"supermarket"
+        }
+      ]
+    });
+
+    db.createUser({
+    user:"superadmin1",
+    pwd:"hello",
+    roles:[
+        {
+            role:"dbOwner",
+            db:"supermarket"
+        },
+        {
+             role:"readAnyDatabase",
+            db:"admin"
+        },
+        {
+             role:"backup",
+            db:"admin"
+        },
+        {
+             role:"restore",
+            db:"admin"
+        }
+    ]});
+
+
